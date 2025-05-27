@@ -5,7 +5,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/sgaunet/perplexity-go/v2"
+	"github.com/michaelJyee/perplexity-go"
 )
 
 // This example demonstrates how to create a completion request with a message

@@ -3,7 +3,7 @@ package perplexity_test
 import (
 	"testing"
 
-	"github.com/sgaunet/perplexity-go/v2"
+	"github.com/michaelJyee/perplexity-go"
 	"github.com/stretchr/testify/assert"
 )
 
