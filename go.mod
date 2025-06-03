@@ -1,4 +1,4 @@
-module github.com/sgaunet/perplexity-go/v2
+module github.com/michaelJyee/perplexity-go/v2
 
 go 1.22.4
 require (
