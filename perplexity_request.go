@@ -71,6 +71,8 @@ type CompletionRequest struct {
 	// ReturnRelatedQuestions: Determines whether or not a request to an online model
 	// should return related questions. Related questions are in closed beta
 	ReturnRelatedQuestions bool `json:"return_related_questions"`
+	// ResponseFormat: Optional. Specifies the desired structure for the model's outputs, such as JSON schema or regex.
+	ResponseFormat *ResponseFormat `json:"response_format,omitempty"`
 	// SearchRecencyFilter: Returns search results within the specified time interval - does not apply to images.
 	// Values include year, month, week, day, hour
 	SearchRecencyFilter string `json:"search_recency_filter,omitempty" validate:"omitempty,oneof=year month week day hour"`
@@ -97,6 +99,20 @@ type CompletionRequest struct {
 
 	// WebSearchOptions: Optional. Controls web search context and user location for search refinement.
 	WebSearchOptions *WebSearchOptions `json:"web_search_options,omitempty" validate:"omitempty"`
+}
+
+type ResponseFormat struct {
+	Type       string      `json:"type" validate:"oneof=json_schema regex"`
+	Regex      *Regex      `json:"regex,omitempty"`
+	JsonScheme *JsonScheme `json:"json_scheme,omitempty"`
+}
+
+type Regex struct {
+	Regex string `json:"regex"`
+}
+
+type JsonScheme struct {
+	Scheme map[string]interface{} `json:"schema"`
 }
 
 // WebSearchOptions specifies web search context size and user location for the request.
@@ -152,12 +168,12 @@ func WithWebSearchOptions(opts *WebSearchOptions) CompletionRequestOption {
 		if opts == nil {
 			return
 		}
-		
+
 		// Apply search context size if set
 		if opts.SearchContextSize != "" {
 			WithSearchContextSize(opts.SearchContextSize)(r)
 		}
-		
+
 		// Apply user location if set
 		if opts.UserLocation != nil {
 			WithUserLocation(
