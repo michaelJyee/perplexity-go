@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/sgaunet/perplexity-go/v2"
+	"github.com/michaelJyee/perplexity-go/v2"
 	"github.com/stretchr/testify/assert"
 )
 

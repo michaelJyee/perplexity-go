@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sgaunet/perplexity-go/v2"
+	"github.com/michaelJyee/perplexity-go/v2"
 	"github.com/stretchr/testify/assert"
 )
 
